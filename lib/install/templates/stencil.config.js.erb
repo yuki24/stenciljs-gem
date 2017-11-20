@@ -1,0 +1,14 @@
+exports.config = {
+  namespace: '<%= Rails.application.class.parent_name.downcase %>',
+  srcDir: 'app/javascript/components/',
+  wwwDir: 'public/components/',
+  publicPath: '/components/build',
+  bundles: [
+    { components: ['hello-world'] }
+  ],
+};
+
+exports.devServer = {
+  root: 'public/components',
+  watchGlob: '**/**'
+}
