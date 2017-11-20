@@ -1,3 +1,3 @@
-module Stenciljs
+module StencilJS
   VERSION = "0.1.0"
 end

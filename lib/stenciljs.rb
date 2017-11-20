@@ -1,5 +1,5 @@
 require "stenciljs/version"
 
-module Stenciljs
+module StencilJS
   # Your code goes here...
 end
