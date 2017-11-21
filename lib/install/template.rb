@@ -10,13 +10,13 @@ if File.exists?(".gitignore")
 EOS
 end
 
-say "Installing runtime dependencies"
+say "\nInstalling runtime dependencies"
 run "yarn add @stencil/core"
 
-say "Installing dev server for live reloading"
+say "\nInstalling dev server for live reloading"
 run "yarn add --dev @stencil/dev-server @stencil/utils @types/jest jest"
 
-say "Injecting jest configurations"
+say "\nInjecting jest configurations"
 gsub_file 'package.json', "  }\n}", <<-JSON
   },
   "jest": {
@@ -40,4 +40,4 @@ append_to_file "app/assets/javascripts/application.js", <<-EOS
 //= require #{Rails.application.class.parent_name.downcase}
 EOS
 
-say "Stencil.js successfully installed 🎉 🍰", :green
+say "\nStencil.js successfully installed 🎉 🍰", :green
