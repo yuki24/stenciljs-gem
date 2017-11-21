@@ -35,9 +35,15 @@ gsub_file 'package.json', "  }\n}", <<-JSON
 }
 JSON
 
-say "Wiring up Stencil.js' entry point into Rails' asset pipeline"
-append_to_file "app/assets/javascripts/application.js", <<-EOS
-//= require #{Rails.application.class.parent_name.downcase}
-EOS
+if File.exists?("app/assets/javascripts/application.js")
+  say "\nWiring up Stencil.js' entry point into Rails' asset pipeline"
+  append_to_file "app/assets/javascripts/application.js", <<-EOS
+  //= require #{Rails.application.class.parent_name.downcase}
+  EOS
+else
+  say "\ncouldn't find app/assets/javascripts/application.js. In order to complete the setup, please"\
+      " add the following script tag manually:\n\n", :red
+  say "    <script src=\"/build/#{Rails.application.class.parent_name.downcase}.js\"></script>"
+end
 
 say "\nStencil.js successfully installed 🎉 🍰", :green
