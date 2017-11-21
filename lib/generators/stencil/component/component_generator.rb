@@ -3,9 +3,9 @@ module Stencil
     source_root File.expand_path('../templates', __FILE__)
 
     def create_component
-      template "component.tsx",     File.join("app/javascript/components/#{file_name}/#{file_name}.tsx")
-      template "component.scss",    File.join("app/javascript/components/#{file_name}/#{file_name}.scss")
-      template "component.spec.ts", File.join("app/javascript/components/#{file_name}/#{file_name}.spec.ts")
+      template "component.tsx",     "app/javascript/components/#{file_name}/#{file_name}.tsx"
+      template "component.scss",    "app/javascript/components/#{file_name}/#{file_name}.scss"
+      template "component.spec.ts", "app/javascript/components/#{file_name}/#{file_name}.spec.ts"
     end
 
     def add_component_bundles
