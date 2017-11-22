@@ -15,6 +15,11 @@ task :stencil do
 end
 
 namespace :stencil do
+  desc "Support for older Rails versions. Install all JavaScript dependencies as specified via Yarn"
+  task :yarn_install, [:arg1, :arg2] do |task, args|
+    system "yarn #{args[:arg1]} #{args[:arg2]}"
+  end
+
   desc "Installs and setup stencil with Yarn"
   task :install do
     template = File.expand_path("../install/template.rb", __dir__)
@@ -93,9 +98,13 @@ namespace :stencil do
   end
 end
 
-# Compile web components after we've compiled all other assets during precompilation
+# Compile web components before we've compiled all other assets during precompilation
 if Rake::Task.task_defined?("assets:precompile")
-  Rake::Task["assets:precompile"].enhance do
-    Rake::Task["stencil:compile"].invoke
+  if Rails::VERSION::STRING >= '5.1.0'
+    Rake::Task["assets:precompile"].enhance ["yarn:install", "stencil:compile"]
+  else
+    # For Rails < 5.1
+    Rake::Task["stencil:compile"].enhance ['stencil:yarn_install']
+    Rake::Task["assets:precompile"].enhance ["stencil:compile"]
   end
 end
