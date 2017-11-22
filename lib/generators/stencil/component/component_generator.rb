@@ -1,8 +1,17 @@
+# frozen-string-literal: true
+
 module Stencil
   class ComponentGenerator < Rails::Generators::NamedBase
     source_root File.expand_path('../templates', __FILE__)
 
     def create_component
+      if !file_name.include?('-')
+        raise "Invalid custom element name `#{file_name}'.\n\n" \
+              "The custom element name must have at least one dash '-' in its name by specification. " \
+              "For the exact requirements, please refer to W3C's official documenattion:\n\n" \
+              "    https://w3c.github.io/webcomponents/spec/custom/#valid-custom-element-name\n\n"
+      end
+
       template "component.tsx",     "app/javascript/components/#{file_name}/#{file_name}.tsx"
       template "component.scss",    "app/javascript/components/#{file_name}/#{file_name}.scss"
       template "component.spec.ts", "app/javascript/components/#{file_name}/#{file_name}.spec.ts"
