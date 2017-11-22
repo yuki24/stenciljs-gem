@@ -18,7 +18,7 @@ And then execute `bundle`. Once the gem is ready, try running the `stencil:insta
 rake stencil:install
 ```
 
-This will generate preconfigured Stencil config files in your app that is best suited to Rails apps. It is best not to change them until you feel comfortable with Stencil.
+This will generate preconfigured Stencil files in your app that is best suited to Rails apps. It is highly recommended not to change them unless you are familiar with Stencil.
 
 In order to build your new Stencil component, just run:
 
@@ -69,7 +69,7 @@ The `stenciljs` gem provides the following rake tasks:
 
 #### Rake Tasks or Yarn Scripts?
 
-There's nothing wrong with both and you should use what feels most natural to you. The only notable  is that `rake stencil:compile` is registered as a prerequisite of `rake assets:precompile` for easier deployment.
+There's nothing wrong with both and you should use what feels most natural to you. The only notable thing is that `rake stencil:compile` is registered as a prerequisite of `rake assets:precompile` for easier deployment.
 
 ## Upcoming Features
 
