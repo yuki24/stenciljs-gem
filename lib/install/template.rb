@@ -14,7 +14,7 @@ say "\nInstalling runtime dependencies"
 run "yarn add @stencil/core"
 
 say "\nInstalling dev server for live reloading"
-run "yarn add --dev @stencil/dev-server @stencil/utils @types/jest jest"
+run "yarn add --dev @stencil/sass @stencil/dev-server @stencil/utils @types/jest jest"
 
 say "\nInjecting jest configurations"
 gsub_file 'package.json', "  }\n}", <<-JSON

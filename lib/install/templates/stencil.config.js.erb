@@ -1,3 +1,5 @@
+const sass = require('@stencil/sass');
+
 exports.config = {
   namespace: '<%= Rails.application.class.parent_name.downcase %>',
   srcDir: 'app/javascript/components/',
@@ -6,6 +8,9 @@ exports.config = {
   bundles: [
     { components: ['hello-world'] }
   ],
+  plugins: [
+    sass()
+  ]
 };
 
 exports.devServer = {
