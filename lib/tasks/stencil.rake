@@ -57,10 +57,10 @@ namespace :stencil do
 
   desc "Verifies if Stencil is installed"
   task verify_install: ['stencil:check_node', 'stencil:check_yarn'] do
-    if Rails.root.join("stencil.config.js").exist?
+    if Rails.root.join("stencil.config.ts").exist?
       $stdout.puts "Stenciljs is installed 🎉 🍰"
     else
-      $stderr.puts "Configuration stencil.config.js file not found. \n"\
+      $stderr.puts "Configuration stencil.config.ts file not found. \n"\
                    "Make sure stencil:install is run successfully before " \
                    "running dependent tasks"
       exit!

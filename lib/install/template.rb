@@ -1,5 +1,5 @@
 copy_file "#{__dir__}/templates/tsconfig.json",         "tsconfig.json"
-template  "#{__dir__}/templates/stencil.config.js.erb", "stencil.config.js"
+template  "#{__dir__}/templates/stencil.config.ts.erb", "stencil.config.ts"
 template  "#{__dir__}/templates/index.html.erb",        "app/javascript/components/index.html"
 copy_file "#{__dir__}/templates/hello-world.tsx",       "app/javascript/components/hello-world/hello-world.tsx"
 

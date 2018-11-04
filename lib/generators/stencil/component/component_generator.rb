@@ -23,13 +23,6 @@ module Stencil
       template "component.spec.ts", "app/javascript/components/#{file_name}/#{file_name}.spec.ts"
     end
 
-    def add_component_bundles
-      gsub_file "stencil.config.js", "  bundles: [\n", <<-JSON
-  bundles: [
-    { components: ['#{file_name}'] },
-JSON
-    end
-
     private
 
     def file_name # :doc:
